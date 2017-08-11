@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+    <title>Home</title>
+
+    <style>
+        body {
+            margin: 40px;
+        }
+
+        .wrapper {
+            display: grid;
+            grid-gap: 10px;
+            grid-template-columns: 150px 2fr 1fr;
+            background-image: : molecule2.jpg;
+            color: #444;
+        }
+
+        .box {
+            background-color: #444;
+            color: #fff;
+            border-radius: 5px;
+            padding: 20px;
+            font-size: 150%;
+        }
+
+        .fgcuLogo {
+            grid-column: 1 / 2;
+            grid-row: 1;
+            background-image: url("FGCUlogo.png");
+            background-size: 100px;
+            background-color: transparent;
+            background-repeat: no-repeat;
+            background-position-x:center;
+            min-height: 80px;
+            align-items: center;
+            z-index: 2;
+            margin-left: 10px;
+            margin-top:10px;
+        }
+        .menuBox {
+            grid-column: 2 / 4;
+            grid-row: 1;
+            background-color: transparent;
+            min-height: 80px;
+            z-index:2;
+            
+        }
+
+        .welcome {
+            grid-column: 1 / 4;
+            grid-row: 1 / 4;
+            overflow: hidden;
+            background: linear-gradient( rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3) ), url("FGCUbldg.jpg");
+            background-size: cover;
+            z-index: 1;
+            padding-bottom: 700px;
+            padding-top: -200px;
+        }
+        .welcomeBlurb {
+            grid-column: 1 / 4;
+            grid-row: 3 / 4;
+            margin-left: 20px;
+            margin-right: 20px;
+            background-color: transparent;
+            z-index: 2;
+            color: #fff;
+            font-size: 20px;
+            text-align: right;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+        }
+        .welcomeBlurb >div{
+            grid-column: 4 / 7;
+            margin-top: -50px;
+            padding-left: 20px;
+        }
+        .c {
+            grid-column: 1 / 4;
+            grid-row: 2 / 5;
+            background-color: #009366;
+            z-index: 2;
+        }
+
+        .d {
+            grid-column: 3 / 4;
+            grid-row: 5;
+        }
+        .footer {
+            grid-column: 1 / 4;
+            grid-row: 6;
+            background-color: cadetblue;
+            color: #ddd;
+        }
+        .menu {
+            grid-column: 1 / 4;
+            grid-row: 1 / 4;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+            grid-gap: 5px;
+        }
+            .menu > div {
+                background: transparent;
+                padding: 8px;
+                align-self: center;
+                text-align: center;
+            }
+        
+    </style>
+</head>
+<body ng-app="myApp">
+    <div class="wrapper">
+        <div class="box fgcuLogo">
+        </div>
+        <div class="box menuBox">
+            <div class="menu">
+                <div class="menuItem"><a href="#!/">Home</a></div>
+                <div class="menuItem"><a href="#!/research">Research</a></div>
+                <div class="menuItem"><a href="#!/publications">Publications</a></div>
+                <div class="menuItem"><a href="#!/main">Group</a></div>
+            </div>
+        </div>
+        
+        <div class="box c">
+        
+                <div ng-view></div>
+        </div>
+    </div>
+    <script>
+        var app = angular.module("myApp", ["ngRoute"]);
+        app.config(function ($routeProvider) {
+            $routeProvider
+                .when("/", {
+                    templateUrl: "main.htm"
+                })
+                .when("/research", {
+                    templateUrl: "research.htm"
+                })
+                .when("/publications", {
+                    templateUrl: "publications.htm"
+                })
+            .when("/group", {
+                    templateUrl: "group.htm"
+                });
+        });
+    </script>
+
+</body>
+</html>
